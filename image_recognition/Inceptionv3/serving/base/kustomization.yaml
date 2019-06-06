@@ -29,3 +29,24 @@ vars:
     apiVersion: v1
     kind: ConfigMap
     name: inceptionv3-map-serving
+- fieldref:
+    fieldPath: data.OMP_NUM_THREADS
+  name: OMP_NUM_THREADS
+  objref:
+    apiVersion: v1
+    kind: ConfigMap
+    name: inceptionv3-map-serving
+- fieldref:
+    fieldPath: data.TENSORFLOW_INTER_OP_PARALLELISM
+  name: TENSORFLOW_INTER_OP_PARALLELISM
+  objref:
+    apiVersion: v1
+    kind: ConfigMap
+    name: inceptionv3-map-serving
+- fieldref:
+    fieldPath: data.TENSORFLOW_INTRA_OP_PARALLELISM
+  name: TENSORFLOW_INTRA_OP_PARALLELISM
+  objref:
+    apiVersion: v1
+    kind: ConfigMap
+    name: inceptionv3-map-serving

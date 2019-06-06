@@ -11,3 +11,11 @@ patchesJson6902:
     kind: Deployment
     name: $(svcName)
     version: v1beta1
+configMapGenerator:
+- literals:
+  - name=inceptionv3-gcs-dist
+  - modelBasePath=gs://kvadla/inceptionv3/
+  - OMP_NUM_THREADS=2
+  - TENSORFLOW_INTER_OP_PARALLELISM=1
+  - TENSORFLOW_INTRA_OP_PARALLELISM=2
+  name: inceptionv3-map-serving
