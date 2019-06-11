@@ -20,7 +20,7 @@ You also need the following command line tools (Latest Versions):
 - [pip](https://pypi.org/project/pip/)
 - [virtualenv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
-To convert frozen graph to `savedmodel` format and run the client at the end of the example, you must have [requirements.txt](requirements.txt) intalled in your active python environment.
+To convert frozen graph to `SavedModel` format and run the client at the end of the example, you must have [requirements.txt](requirements.txt) intalled in your active python environment.
 
 ```
 sudo apt-get install -y python python-pip
@@ -36,9 +36,9 @@ NOTE: These instructions rely on Github, and may cause issues if behind a firewa
 
 
 ### Build and Push Intel Optimized Tensorflow Serving Image
-* We have provided a script (`build_mkl_tfserving_image.sh`) to build intel-optimized tensorflow serving image or you can follow manual instructions from [here](https://github.com/NervanaSystems/intel-models/blob/develop/docs/general/tensorflow_serving/InstallationGuide.md#step-1-build-tensorflow-serving-docker-image).
+* We have provided a script (`build_mkl_tfserving_image.sh`) to build intel-optimized tensorflow serving image. or For manual instructions follow [this](https://github.com/NervanaSystems/intel-models/blob/develop/docs/general/tensorflow_serving/InstallationGuide.md#step-1-build-tensorflow-serving-docker-image).
 * First time build takes longer, but all consecutive builds should be faster as docker uses cached layers.
-* After image is built, push it your public registry. We will us this image in future steps
+* After image is built, push it your public registry. We will use this image in future steps
 ```
 VERSION=1.13.0
 TAG=intel-mkl-${VERSION}
@@ -144,7 +144,7 @@ You can check the deployment by running
 kubectl describe deployments inceptionv3-gcs-dist
 ```
 
-The service should make the `mnist-gcs-dist` deployment accessible over port 9000
+The service should make the `inceptionv3-gcs-dist` deployment accessible over port 9000
 
 ```
 kubectl describe service inceptionv3-gcs-dist
