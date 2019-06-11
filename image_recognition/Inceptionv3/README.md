@@ -36,7 +36,7 @@ NOTE: These instructions rely on Github, and may cause issues if behind a firewa
 
 
 ### Build and Push Intel Optimized Tensorflow Serving Image
-* We have provided a script (`build_mkl_tfserving_image.sh`) to build intel-optimized tensorflow serving image. or For manual instructions follow [this](https://github.com/NervanaSystems/intel-models/blob/develop/docs/general/tensorflow_serving/InstallationGuide.md#step-1-build-tensorflow-serving-docker-image).
+* We have provided a script (`build_mkl_tfserving_image.sh`) to build intel-optimized tensorflow serving image. or For manual instructions follow [this](https://github.com/IntelAI/models/blob/master/docs/general/tensorflow_serving/InstallationGuide.md#step-1-build-tensorflow-serving-docker-image).
 * First time build takes longer, but all consecutive builds should be faster as docker uses cached layers.
 * After image is built, push it your public registry. We will use this image in future steps
 ```
