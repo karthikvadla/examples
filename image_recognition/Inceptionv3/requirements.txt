@@ -1,0 +1,4 @@
+grpc
+requests
+intel-tensorflow
+tensorflow-serving-api

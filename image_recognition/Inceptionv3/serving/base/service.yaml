@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    getambassador.io/config: |-
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name: tfserving-predict-mapping-inceptionv3
+      prefix: /tfserving/models/inceptionv3
+      rewrite: /v1/models/inceptionv3:predict
+      method: POST
+      service: inceptionv3-service.kubeflow:8500
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name: tfserving-predict-mapping-inceptionv3-get
+      prefix: /tfserving/models/inceptionv3
+      rewrite: /v1/models/inceptionv3
+      method: GET
+      service: inceptionv3-service.kubeflow:8500
+    prometheus.io/path: /monitoring/prometheus/metrics
+    prometheus.io/port: "8500"
+    prometheus.io/scrape: "true"
+  labels:
+    app: inceptionv3
+  name: $(svcName)
+  namespace: kubeflow
+spec:
+  ports:
+  - name: grpc-tf-serving
+    port: 9000
+    targetPort: 9000
+  - name: http-tf-serving
+    port: 8500
+    targetPort: 8500
+  selector:
+    app: inceptionv3
+  type: ClusterIP
